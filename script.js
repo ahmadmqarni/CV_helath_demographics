@@ -1,7 +1,7 @@
 // ---- Configuration ----
 // Paste the Google Apps Script Web App URL here after deploying it
 // (see README.md for step-by-step instructions).
-const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbx7ALYcyx7liY3DtrWrXX5k6uYL1Mri7bTiO1w6vZuRe41BU8BFUQ068GN0-FHSJIGqVw/exec";
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbxL75bUOIx_hnQhR-57n8yzM7AFVZln2ZkHrQUTDVzM4bOkXIarwEtM8lrR8z9HM3nbFg/exec";
 
 // ---- Theme toggle ----
 const root = document.documentElement;
@@ -119,7 +119,7 @@ form.addEventListener("submit", async (event) => {
     family_history: document.getElementById("family-history").value,
   };
 
-  if (SUBMIT_URL.includes("PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE")) {
+  if (SUBMIT_URL.includes("https://script.google.com/macros/s/AKfycbxL75bUOIx_hnQhR-57n8yzM7AFVZln2ZkHrQUTDVzM4bOkXIarwEtM8lrR8z9HM3nbFg/exec")) {
     statusMessage.textContent =
       "Submission storage isn't configured yet. See README.md to connect a Google Sheet.";
     statusMessage.classList.add("error");
