@@ -1,7 +1,7 @@
 // ---- Configuration ----
 // Paste the Google Apps Script Web App URL here after deploying it
 // (see README.md for step-by-step instructions).
-const SUBMIT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbx7ALYcyx7liY3DtrWrXX5k6uYL1Mri7bTiO1w6vZuRe41BU8BFUQ068GN0-FHSJIGqVw/exec";
 
 // ---- Theme toggle ----
 const root = document.documentElement;
