@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CV Health Demographics Survey</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <h1>Cardiovascular Health Survey</h1>
+    <button id="theme-toggle" type="button" aria-label="Toggle dark and light theme">🌙</button>
+  </header>
+
+  <main>
+    <p class="intro">
+      This anonymous, one-page survey collects basic demographic and
+      cardiovascular health information for research purposes. No name or
+      other identifying information is collected.
+    </p>
+
+    <form id="survey-form" novalidate>
+
+      <fieldset>
+        <legend>Demographics</legend>
+
+        <label for="age">Age (years) <span class="req">*</span></label>
+        <input type="number" id="age" name="age" min="0" max="120" required />
+
+        <label for="gender">Gender <span class="req">*</span></label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+
+        <div class="row">
+          <div class="col">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" name="height" min="0" max="260" />
+          </div>
+          <div class="col">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" min="0" max="400" />
+          </div>
+        </div>
+        <p id="bmi-display" class="hint"></p>
+
+        <label for="ethnicity">Ethnicity (optional)</label>
+        <select id="ethnicity" name="ethnicity">
+          <option value="" selected>Prefer not to say</option>
+          <option value="Arab">Arab</option>
+          <option value="Asian">Asian</option>
+          <option value="Black / African">Black / African</option>
+          <option value="Hispanic / Latino">Hispanic / Latino</option>
+          <option value="White / Caucasian">White / Caucasian</option>
+          <option value="Mixed">Mixed</option>
+          <option value="Other">Other</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Chronic Comorbidities</legend>
+        <p class="hint">Select all that apply.</p>
+        <div class="checkbox-grid" id="comorbidities-group">
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Hypertension" /> Hypertension (high blood pressure)</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Diabetes Mellitus" /> Diabetes mellitus</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Dyslipidemia" /> Dyslipidemia (high cholesterol)</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Obesity" /> Obesity</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Chronic Kidney Disease" /> Chronic kidney disease</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Prior Heart Disease" /> Prior heart disease (MI / angina / heart failure)</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Prior Stroke or TIA" /> Prior stroke / TIA</label>
+          <label class="checkbox"><input type="checkbox" name="comorbidities" value="Peripheral Artery Disease" /> Peripheral artery disease</label>
+          <label class="checkbox"><input type="checkbox" id="comorbidity-none" name="comorbidities" value="None" /> None</label>
+        </div>
+        <label for="comorbidities-other">Other (optional)</label>
+        <input type="text" id="comorbidities-other" name="comorbidities_other" placeholder="Specify other condition" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Medication Use</legend>
+        <p class="hint">Are you currently taking any regular medication?</p>
+        <div class="radio-row">
+          <label class="radio"><input type="radio" name="on_medication" value="Yes" /> Yes</label>
+          <label class="radio"><input type="radio" name="on_medication" value="No" /> No</label>
+        </div>
+
+        <div id="medication-detail" class="conditional hidden">
+          <p class="hint">Select all that apply.</p>
+          <div class="checkbox-grid">
+            <label class="checkbox"><input type="checkbox" name="medications" value="Antihypertensive" /> Antihypertensive (blood pressure)</label>
+            <label class="checkbox"><input type="checkbox" name="medications" value="Statin / Lipid-lowering" /> Statin / lipid-lowering</label>
+            <label class="checkbox"><input type="checkbox" name="medications" value="Antidiabetic" /> Antidiabetic (oral / insulin)</label>
+            <label class="checkbox"><input type="checkbox" name="medications" value="Antiplatelet" /> Antiplatelet (e.g. aspirin)</label>
+            <label class="checkbox"><input type="checkbox" name="medications" value="Anticoagulant" /> Anticoagulant (blood thinner)</label>
+          </div>
+          <label for="medications-other">Other (optional)</label>
+          <input type="text" id="medications-other" name="medications_other" placeholder="Specify other medication" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Lifestyle & Risk Factors</legend>
+
+        <label for="smoking">Smoking status <span class="req">*</span></label>
+        <select id="smoking" name="smoking" required>
+          <option value="" disabled selected>Select…</option>
+          <option value="Never">Never smoked</option>
+          <option value="Former">Former smoker</option>
+          <option value="Current">Current smoker</option>
+        </select>
+
+        <div id="smoking-detail" class="conditional hidden">
+          <div class="row">
+            <div class="col">
+              <label for="cigarettes-per-day">Cigarettes / day</label>
+              <input type="number" id="cigarettes-per-day" name="cigarettes_per_day" min="0" max="100" />
+            </div>
+            <div class="col">
+              <label for="years-smoked">Years smoked</label>
+              <input type="number" id="years-smoked" name="years_smoked" min="0" max="100" />
+            </div>
+          </div>
+        </div>
+
+        <label for="alcohol">Alcohol consumption</label>
+        <select id="alcohol" name="alcohol">
+          <option value="" selected>Prefer not to say</option>
+          <option value="Never">Never</option>
+          <option value="Occasional">Occasional</option>
+          <option value="Regular">Regular</option>
+        </select>
+
+        <label for="activity">Physical activity level</label>
+        <select id="activity" name="activity">
+          <option value="" selected>Prefer not to say</option>
+          <option value="Sedentary">Sedentary (little to no exercise)</option>
+          <option value="Light">Light (1-2 days/week)</option>
+          <option value="Moderate">Moderate (3-4 days/week)</option>
+          <option value="Vigorous">Vigorous (5+ days/week)</option>
+        </select>
+
+        <label for="family-history">Family history of cardiovascular disease</label>
+        <select id="family-history" name="family_history">
+          <option value="" selected>Unknown</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Consent</legend>
+        <label class="checkbox">
+          <input type="checkbox" id="consent" name="consent" required />
+          I understand this survey is anonymous, no identifying information
+          is collected, and I consent to my responses being used for
+          research purposes. <span class="req">*</span>
+        </label>
+      </fieldset>
+
+      <div id="status-message" class="status" role="status" aria-live="polite"></div>
+
+      <button type="submit" id="submit-btn">Submit</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>No names or contact details are collected. Data is stored anonymously.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
